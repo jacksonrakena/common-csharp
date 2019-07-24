@@ -43,4 +43,4 @@ steps:
     command: 'push'
     packagesToPush: 'artifacts/*.nupkg'
     nuGetFeedType: 'external'
-    publishFeedCredentials: 'NuGet abyssal512'
+    publishFeedCredentials: 'NuGet v3'
