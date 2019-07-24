@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Abyssal.Common.Extensions
 {
+    /// <summary>
+    ///     A set of LINQ extensions.
+    /// </summary>
     public static class LinqExtensions
     {
         /// <summary>

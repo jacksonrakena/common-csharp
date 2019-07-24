@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix Condition=" '$(BuildNumber)' != '' ">$(VersionPrefix)-$(BuildNumber)</VersionPrefix>
+    <AssemblyName>Abyssal.Common</AssemblyName>
+    <Description>A set of common classes and utilities used across my projects.</Description>
+    <Authors>abyssal512</Authors>
+    <PackageTags>utilities;utility</PackageTags>
+    <PackageLicenseUrl>https://github.com/abyssal512/Abyssal.Common/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abyssal512/Abyssal.Common</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/abyssal512/Abyssal.Common</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

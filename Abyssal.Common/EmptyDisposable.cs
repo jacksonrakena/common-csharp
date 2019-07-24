@@ -9,6 +9,7 @@ namespace Abyssal.Common
     /// </summary>
     public sealed class EmptyDisposable : IDisposable
     {
+        /// <inheritdoc />
         public void Dispose()
         {
         }

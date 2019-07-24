@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Abyssal.Common
 {
+    /// <summary>
+    ///     A set of extensions for the <see cref="IServiceProvider"/> class.
+    /// </summary>
     public static class ServiceProviderExtensions
     {
         /// <summary>
@@ -61,6 +64,7 @@ namespace Abyssal.Common
         /// <summary>
         ///     Attempts to locate a service that is of the provided type.
         /// </summary>
+        /// <param name="provider">The service provider to locate from.</param>
         /// <param name="type">The type to locate.</param>
         /// <param name="result">The output, should the operation be successful.</param>
         /// <returns>A boolean representing whether the operation succeeded.</returns>
@@ -81,6 +85,7 @@ namespace Abyssal.Common
         ///     Attempts to locate a service that is of the provided type.
         /// </summary>
         /// <typeparam name="T">The type to locate.</typeparam>
+        /// <param name="provider">The provider to locate from.</param>
         /// <param name="result">The output, should the operation be successful.</param>
         /// <returns>A boolean representing whether the operation succeeded.</returns>
         public static bool TryGetService<T>(this IServiceProvider provider, out T result)
