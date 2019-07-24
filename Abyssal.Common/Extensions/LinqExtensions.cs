@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Abyssal.Common.Extensions
+namespace Abyssal.Common
 {
     /// <summary>
     ///     A set of LINQ extensions.
