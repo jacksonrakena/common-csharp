@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <VersionPrefix>1.0.0</VersionPrefix>
+    <LangVersion>7.1</LangVersion>
     <VersionPrefix Condition=" '$(BuildNumber)' != '' ">$(VersionPrefix)-$(BuildNumber)</VersionPrefix>
     <AssemblyName>Abyssal.Common</AssemblyName>
     <Description>A set of common classes and utilities used across my projects.</Description>
