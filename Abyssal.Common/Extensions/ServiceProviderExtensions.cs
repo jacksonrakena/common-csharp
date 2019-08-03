@@ -31,7 +31,28 @@ namespace Abyssal.Common
         /// </exception>
         public static T Create<T>(this IServiceProvider serviceProvider)
         {
-            var type = typeof(T);
+            return (T) Create(serviceProvider, typeof(T));
+        }
+
+        /// <summary>
+        ///     Attempts to create an object of the provided type, injecting constructor parameters
+        ///     from services in <paramref name="serviceProvider"/>.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider to pull services from.</param>
+        /// <param name="type">The type of the object to instantiate.</param>
+        /// <returns>An object of the provvided type..</returns>
+        /// <exception cref="InvalidOperationException">
+        ///     Thrown if:
+        ///     The provided <see cref="Type" /> is an interface, or <see langword="abstract"/>.
+        ///     -or-
+        ///     There are no public, instance-level constructors for the provided <see cref="Type" />.
+        ///     -or-
+        ///     There is more than one public, instance-level constructor for the provided <see cref="Type"/>.
+        ///     -or-
+        ///     The method could not find a service for a type that is required by the constructor.
+        /// </exception>
+        public static object Create(this IServiceProvider serviceProvider, Type type)
+        {
             if (type.IsInterface || type.IsAbstract) throw new InvalidOperationException("Cannot instantiate an abstract type, or an interface type.");
 
             var constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
@@ -58,7 +79,7 @@ namespace Abyssal.Common
                 parametersToExecute.Add(service);
             }
 
-            return (T) constructor.Invoke(parametersToExecute.ToArray());
+            return constructor.Invoke(parametersToExecute.ToArray());
         }
 
         /// <summary>
