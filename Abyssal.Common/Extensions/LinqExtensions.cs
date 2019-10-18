@@ -16,9 +16,9 @@ namespace Abyssal.Common
         /// <param name="source">The array to select the element from.</param>
         /// <param name="random">The random number generator engine to use. It will default to a new instance of <see cref="System.Random"/>.</param>
         /// <returns>The selected element.</returns>
-        public static T Random<T>(this T[] source, Random random = null)
+        public static T Random<T>(this T[] source, Random? random = null)
         {
-            random = random ?? new Random();
+            random ??= new Random();
             return source[random.Next(0, source.Length)];
         }
 
@@ -29,9 +29,9 @@ namespace Abyssal.Common
         /// <param name="source">The list to select the element from.</param>
         /// <param name="random">The random number generator engine to use. It will default to a new instance of <see cref="System.Random"/>.</param>
         /// <returns>The selected element.</returns>
-        public static T Random<T>(this IList<T> source, Random random = null)
+        public static T Random<T>(this IList<T> source, Random? random = null)
         {
-            random = random ?? new Random();
+            random ??= new Random();
             return source[random.Next(0, source.Count)];
         }
     }

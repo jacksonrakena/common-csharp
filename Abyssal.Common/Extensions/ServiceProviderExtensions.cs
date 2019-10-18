@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -89,7 +90,7 @@ namespace Abyssal.Common
         /// <param name="type">The type to locate.</param>
         /// <param name="result">The output, should the operation be successful.</param>
         /// <returns>A boolean representing whether the operation succeeded.</returns>
-        public static bool TryGetService(this IServiceProvider provider, Type type, out object result)
+        public static bool TryGetService(this IServiceProvider provider, Type type, [NotNullWhen(true)] out object? result)
         {
             var query = provider.GetService(type);
             if (query != null)
@@ -109,7 +110,7 @@ namespace Abyssal.Common
         /// <param name="provider">The provider to locate from.</param>
         /// <param name="result">The output, should the operation be successful.</param>
         /// <returns>A boolean representing whether the operation succeeded.</returns>
-        public static bool TryGetService<T>(this IServiceProvider provider, out T result)
+        public static bool TryGetService<T>(this IServiceProvider provider, [NotNullWhen(true)] out T? result) where T : class
         {
             var query = provider.GetService<T>();
             if (query != null)
