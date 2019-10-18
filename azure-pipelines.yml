@@ -13,10 +13,12 @@ variables:
   Patch: '1'
 
 steps:
-- task: DotNetCoreInstaller@0
-  displayName: 'Install .NET Core 3.0.100'
+- task: UseDotNet@2
+  displayName: 'Install .NET Core'
   inputs:
-    version: '3.0.100'
+    version: 3.0.100
+    packageType: sdk
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: NuGetToolInstaller@0
   displayName: 'Install NuGet'
@@ -41,6 +43,6 @@ steps:
   displayName: 'Push project to NuGet'
   inputs:
     command: 'push'
-    packagesToPush: 'artifacts/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NuGet v3'
