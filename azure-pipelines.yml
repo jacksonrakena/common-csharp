@@ -36,13 +36,13 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    dotnet pack "Abyssal.Common\Abyssal.Common.csproj" -c $(buildConfiguration) /p:BuildNumber=$(Build.BuildNumber)
+    dotnet pack "Abyssal.Common\Abyssal.Common.csproj" -o "artifacts/" -c $(buildConfiguration) /p:BuildNumber=$(Build.BuildNumber)
   displayName: 'Pack projects'
 
 - task: NuGetCommand@2
   displayName: 'Push project to NuGet'
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: 'artifacts/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NuGet v3'
