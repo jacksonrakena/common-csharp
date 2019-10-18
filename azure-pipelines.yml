@@ -36,7 +36,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    dotnet pack "Abyssal.Common\Abyssal.Common.csproj" -o "../artifacts/" -c $(buildConfiguration) /p:BuildNumber=$(Build.BuildNumber)
+    dotnet pack "Abyssal.Common\Abyssal.Common.csproj" -o "artifacts/" -c $(buildConfiguration) /p:BuildNumber=$(Build.BuildNumber)
   displayName: 'Pack projects'
 
 - task: NuGetCommand@2
