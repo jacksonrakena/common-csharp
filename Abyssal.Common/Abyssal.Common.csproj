@@ -20,9 +20,4 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <NoWarn>$(NoWarn);8600;8601;8602;8603;8604</NoWarn>
-  </PropertyGroup>
-
 </Project>
