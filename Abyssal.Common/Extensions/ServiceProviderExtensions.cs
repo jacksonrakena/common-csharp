@@ -61,6 +61,21 @@ namespace Abyssal.Common
             if (constructors.Length > 1) throw new InvalidOperationException($"There are more than one public, instance-level constructors for {type.Name}.");
             var constructor = constructors[0];
 
+            return Inject(serviceProvider, constructor);
+        }
+
+        /// <summary>
+        ///     Attempts to inject services from a service provider into a constructor, and constructs the object.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="constructor">The constructor to inject services into.</param>
+        /// <returns>A constructed object.</returns>
+        /// <exception cref="InvalidOperationException">
+        ///     Thrown if:
+        ///     The method could not find a service for a type that is required by the constructor.
+        /// </exception>
+        public static object Inject(this IServiceProvider serviceProvider, ConstructorInfo constructor)
+        {
             var parametersToExecute = new List<object>();
             var serviceProviderType = typeof(IServiceProvider);
             foreach (var parameter in constructor.GetParameters())
@@ -74,12 +89,11 @@ namespace Abyssal.Common
                 var service = serviceProvider.GetService(parameter.ParameterType);
                 if (service == null)
                 {
-                    throw new InvalidOperationException($"Could not find a service for {parameter.ParameterType.Name}, while building an object of type {type.Name}.");
+                    throw new InvalidOperationException($"Could not find a service for {parameter.ParameterType.Name}, while building an object of type {parameter.Member.DeclaringType.Name}.");
                 }
 
                 parametersToExecute.Add(service);
             }
-
             return constructor.Invoke(parametersToExecute.ToArray());
         }
 
