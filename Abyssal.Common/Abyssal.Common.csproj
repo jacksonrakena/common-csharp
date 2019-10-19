@@ -10,10 +10,10 @@
     <Authors>Abyssal</Authors>
     <Nullable>Enable</Nullable>
     <PackageTags>utilities;utility</PackageTags>
-    <PackageLicenseUrl>https://github.com/abyssal/Abyssal.Common/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/abyssal/Abyssal.Common</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/abyssal/common/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abyssal/common</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/abyssal/Abyssal.Common</RepositoryUrl>
+    <RepositoryUrl>https://github.com/abyssal/common</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
