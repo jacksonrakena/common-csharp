@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <LangVersion>8.0</LangVersion>
     <VersionPrefix Condition=" '$(BuildNumber)' != '' ">$(VersionPrefix)-$(BuildNumber)</VersionPrefix>
     <AssemblyName>Abyssal.Common</AssemblyName>
@@ -15,9 +14,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abyssal/common</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
   </ItemGroup>
 </Project>
