@@ -14,5 +14,8 @@ A set of common classes and utilities used across my projects.
 - [`IActionScheduler`](Abyssal.Common/Scheduling/IActionScheduler.cs): A utility service that can schedule callbacks for execution at a later date. Default implementation at [`ActionScheduler`](Abyssal.Common/Scheduling/ActionScheduler.cs).
 - [`ScheduledAction`](Abyssal.Common/Scheduling/ScheduledAction.cs): A data class for actions scheduled with `IActionScheduler`.
 
+**Caching**
+- [`Cachable<T>`](Abyssal.Common/Cachable.cs): A utility class that represents a time-based cachable value.
+
 ### Copyright
 &copy; 2019-2021 Abyssal under the MIT License. Use at your own risk. Not responsible for your microwave exploding.
