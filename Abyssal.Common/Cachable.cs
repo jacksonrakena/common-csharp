@@ -38,6 +38,17 @@ namespace Abyssal.Common
         }
 
         /// <summary>
+        ///     Creates a new <see cref="Cachable{T}"/> instance, with no initial value.
+        ///     Note that this instance will start as an expired instance.
+        /// </summary>
+        /// <param name="expiry">When to expire the value.</param>
+        /// <returns>The created <see cref="Cachable{T}"/>.</returns>
+        public static Cachable<T?> Empty(TimeSpan expiry)
+        {
+            return new(default, DateTimeOffset.UnixEpoch, expiry);
+        }
+
+        /// <summary>
         ///     Validates whether the internal value has expired, using <see cref="LastUpdated"/> and <see cref="Expiry"/>.
         /// </summary>
         [MemberNotNullWhen(false, "Value")]
@@ -51,10 +62,26 @@ namespace Abyssal.Common
         ///     Updates the value of this <see cref="Cachable{T}"/>.
         /// </summary>
         /// <param name="newValue">The new value to set.</param>
-        public void SetValue(T newValue)
+        public void Set(T newValue)
         {
             Value = newValue;
             LastUpdated = DateTimeOffset.Now;
+        }
+
+        /// <summary>
+        ///     Attempts to return the current value of this <see cref="Cachable{T}"/>, returning
+        ///     false if the internal value is expired or null.
+        /// </summary>
+        public bool TryGetValue([NotNullWhen(true)] out T? value)
+        {
+            if (IsExpired())
+            {
+                value = default;
+                return false;
+            }
+
+            value = Value;
+            return true;
         }
     }
 }
