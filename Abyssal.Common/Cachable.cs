@@ -43,7 +43,7 @@ namespace Abyssal.Common
         /// </summary>
         /// <param name="expiry">When to expire the value.</param>
         /// <returns>The created <see cref="Cachable{T}"/>.</returns>
-        public static Cachable<T?> Empty(TimeSpan expiry)
+        public static Cachable<T> Empty(TimeSpan expiry)
         {
             return new(default, DateTimeOffset.UnixEpoch, expiry);
         }
