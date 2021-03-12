@@ -30,6 +30,14 @@ namespace Abyssal.Common
         }
 
         /// <summary>
+        ///     Checks whether a cachable associated with a <see cref="TKey"/> has expired.
+        /// </summary>
+        public bool IsExpired(TKey key)
+        {
+            return GetCachable(key).IsExpired();
+        }
+
+        /// <summary>
         ///     Gets the internal <see cref="Cachable{T}"/> for a key.
         /// </summary>
         public Cachable<TValue> GetCachable(TKey key)
